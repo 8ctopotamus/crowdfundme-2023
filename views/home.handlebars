@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Welcome to CrowdfundMe!</h1>
+  <ul>
+    {{#each projects}}
+      <li>
+        <a href="/projects/{{id}}">
+          {{name}}
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+</div>
