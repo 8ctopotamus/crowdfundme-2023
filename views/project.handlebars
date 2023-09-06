@@ -1,0 +1,9 @@
+<div class="container">
+    <h1>{{name}}</h1>
+    <p>{{description}}</p>
+    <h5>Created: {{format_date date_created}}</h5>
+    <h5>By: {{"user.name"}}</h5>
+    {{#unless fundingReached }}
+        <div class="alert alert-warning" role="alert">This project needs funding: ${{needed_funding}}</div>
+    {{/unless}}
+</div>
