@@ -1,4 +1,5 @@
 const router = require('express').Router()
+// const session = require('express-session')
 const { Project, User } = require('../models')
 
 // homepage
@@ -32,6 +33,30 @@ router.get('/login', async (req, res) => {
   } catch(err) {
     res.status(500).json(err)
   }
+})
+
+router.get('/profile', async (req, res) => {
+  const user_id = req.session.user_id
+  if (!user_id){
+    res.redirect('/login')
+  }
+  try {
+    const user = await User.findByPk(user_id, {
+      raw: true,
+    })
+
+    const projects = await Project.findAll({
+      where: {
+        user_id
+      },
+      raw: true
+    })
+
+    res.render('profile', {...user, projects})
+  } catch (err){
+    res.status(500).json(err)
+  }
+  
 })
 
 

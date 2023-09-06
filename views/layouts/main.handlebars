@@ -13,6 +13,10 @@
     <div class="container">
       <a href="/" class="navbar-brand">CrowdfundMe 2023</a>
       {{> log-in-out}}
+      {{#if loggedIn}}
+        <a href="/profile">Profile</a>
+      {{/if}}
+
     </div>
   </nav>
 
